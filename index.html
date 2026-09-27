@@ -52,7 +52,7 @@
 
   .brand-group{ display:flex; align-items:center; gap:10px; }
 
-  /* ---- LOGO (substitui o antigo .monogram) ---- */
+  /* ---- LOGO ---- */
   .logo-wrapper{
     width:40px; height:40px; border-radius:50%; flex:none;
     display:flex; align-items:center; justify-content:center;
@@ -72,7 +72,6 @@
     border-radius:50%;
     display:block;
   }
-  /* -------------------------------------------- */
 
   nav{
     position:sticky; top:0; z-index:60;
@@ -122,7 +121,7 @@
   .btn-gold{ background: linear-gradient(135deg, var(--ouro-claro), var(--ouro)); color:#1A1305; box-shadow:0 10px 24px rgba(201,168,106,.28); }
   .btn-outline{ border:1.5px solid var(--border); color: var(--texto); }
 
-  /* ---- QUADRADO AMOSTRATIVO +20 ANOS ---- */
+  /* ---- BADGE +20 ANOS ---- */
   .badge-experience{
     display: inline-flex;
     align-items: center;
@@ -153,7 +152,6 @@
     line-height: 1.2;
     text-align: left;
   }
-  /* --------------------------------------- */
 
   main{ padding:10px 0 10px; }
   section{ margin:52px 0; }
@@ -167,21 +165,84 @@
   }
   .about-card b{ color: var(--texto); }
 
-  .insurance-list{ display:flex; flex-direction:column; gap:16px; }
-  .insurance-card{
-    background: var(--navy-2); border:1px solid var(--border); border-radius:16px;
-    padding:24px;
+  /* ===== TABS ===== */
+  .tabs-seguros{
+    background: var(--navy-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
   }
-  .insurance-head{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-  .insurance-ico{
-    width:44px; height:44px; border-radius:12px; flex:none;
-    background: linear-gradient(135deg, rgba(201,168,106,.22), rgba(201,168,106,.08));
-    display:flex; align-items:center; justify-content:center; font-size:20px;
+
+  .tabs-nav{
+    display: flex;
+    gap: 4px;
+    padding: 10px;
+    background: rgba(176,141,79,.06);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .insurance-card h3{ font-size:18px; font-weight:700; color: var(--texto); }
-  .insurance-card p{ font-size:14px; color: var(--muted); }
-  .insurance-card .why{ margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
-  .insurance-card .why b{ display:block; font-size:12.5px; color: var(--ouro); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+  .tabs-nav::-webkit-scrollbar{ display: none; }
+
+  .tab-btn{
+    flex: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .2s;
+  }
+  .tab-btn:hover{ color: var(--texto); }
+  .tab-btn.active{
+    background: linear-gradient(135deg, var(--ouro-claro), var(--ouro));
+    color: #1A1305;
+    box-shadow: 0 4px 12px rgba(176,141,79,.28);
+  }
+
+  .tab-panel{
+    display: none;
+    padding: 22px 22px 24px;
+    animation: fadeIn .25s ease;
+  }
+  .tab-panel.active{ display: block; }
+
+  @keyframes fadeIn{
+    from{ opacity: 0; transform: translateY(6px); }
+    to{ opacity: 1; transform: none; }
+  }
+
+  .tab-panel h3{
+    font-size: 19px;
+    color: var(--texto);
+    margin-bottom: 10px;
+  }
+  .tab-panel p{
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .tab-panel .why{
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .tab-panel .why b{
+    display: block;
+    font-size: 12px;
+    color: var(--ouro);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: 6px;
+  }
 
   .contact-card{
     background: var(--navy-2); border:1px solid var(--border); border-radius:16px; padding:6px 20px;
@@ -262,14 +323,18 @@
     <section id="seguros">
       <span class="kicker">Coberturas</span>
       <h2>Seguros</h2>
-      <div class="section-sub">Cada seguro protege uma parte diferente da sua vida. Veja por que cada um importa.</div>
+      <div class="section-sub">Toque em uma cobertura pra ver os detalhes.</div>
 
-      <div class="insurance-list">
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">🏠</div>
-            <h3>Seguro Casa</h3>
-          </div>
+      <div class="tabs-seguros">
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" data-tab="casa" role="tab">🏠 Casa</button>
+          <button class="tab-btn" data-tab="carro" role="tab">🚗 Carro</button>
+          <button class="tab-btn" data-tab="vida" role="tab">❤️ Vida</button>
+          <button class="tab-btn" data-tab="odonto" role="tab">🦷 Odontológico</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="casa">
+          <h3>🏠 Seguro Casa</h3>
           <p>Cobertura contra incêndio, roubo, danos elétricos e desastres naturais, protegendo tanto o imóvel quanto os bens dentro dele.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -277,11 +342,8 @@
           </div>
         </div>
 
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">🚗</div>
-            <h3>Seguro Carro</h3>
-          </div>
+        <div class="tab-panel" data-panel="carro">
+          <h3>🚗 Seguro Carro</h3>
           <p>Cobertura contra colisão, roubo, furto e terceiros, com assistência 24h pra imprevistos na estrada.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -289,11 +351,8 @@
           </div>
         </div>
 
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">❤️</div>
-            <h3>Seguro Vida</h3>
-          </div>
+        <div class="tab-panel" data-panel="vida">
+          <h3>❤️ Seguro Vida</h3>
           <p>Proteção financeira pra quem depende de você, com cobertura por morte, invalidez e diárias por incapacidade temporária.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -301,11 +360,8 @@
           </div>
         </div>
 
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">🦷</div>
-            <h3>Odontológico</h3>
-          </div>
+        <div class="tab-panel" data-panel="odonto">
+          <h3>🦷 Odontológico</h3>
           <p>Cobertura para consultas, manutenção preventiva e procedimentos odontológicos mais complexos.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -318,14 +374,17 @@
     <section id="planejamento">
       <span class="kicker">Planejamento</span>
       <h2>Previdência e consultoria</h2>
-      <div class="section-sub">Proteção não é só contra imprevistos, também é construir segurança pro futuro.</div>
+      <div class="section-sub">Toque em um item pra ver os detalhes.</div>
 
-      <div class="insurance-list">
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">🌱</div>
-            <h3>Previdência Privada</h3>
-          </div>
+      <div class="tabs-seguros">
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" data-tab="prev" role="tab">🌱 Previdência</button>
+          <button class="tab-btn" data-tab="prot" role="tab">🛡️ Proteção</button>
+          <button class="tab-btn" data-tab="cons" role="tab">📋 Consultoria</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="prev">
+          <h3>🌱 Previdência Privada</h3>
           <p>Complementa a aposentadoria pública, com aportes programados que rendem ao longo do tempo.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -333,11 +392,8 @@
           </div>
         </div>
 
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">🛡️</div>
-            <h3>Proteção Financeira</h3>
-          </div>
+        <div class="tab-panel" data-panel="prot">
+          <h3>🛡️ Proteção Financeira</h3>
           <p>Estratégias e produtos voltados a proteger renda e patrimônio diante de imprevistos: doença, invalidez ou perda de renda.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -345,11 +401,8 @@
           </div>
         </div>
 
-        <div class="insurance-card">
-          <div class="insurance-head">
-            <div class="insurance-ico">📋</div>
-            <h3>Consultoria</h3>
-          </div>
+        <div class="tab-panel" data-panel="cons">
+          <h3>📋 Consultoria</h3>
           <p>Análise personalizada da sua situação (seguros existentes, patrimônio e objetivos) pra montar um plano de proteção sob medida.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -389,11 +442,30 @@
 </a>
 
 <script>
+// Toggle de tema
 document.getElementById('theme-toggle').addEventListener('click', function(){
   var current = document.documentElement.getAttribute('data-theme');
   var next = current === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
   try { localStorage.setItem('av-theme', next); } catch(e) {}
+});
+
+// Tabs (funciona pra qualquer .tabs-seguros na página)
+document.querySelectorAll('.tabs-seguros').forEach(function(grupo){
+  var botoes = grupo.querySelectorAll('.tab-btn');
+  var paineis = grupo.querySelectorAll('.tab-panel');
+
+  botoes.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var alvo = btn.dataset.tab;
+
+      botoes.forEach(function(b){ b.classList.remove('active'); });
+      paineis.forEach(function(p){ p.classList.remove('active'); });
+
+      btn.classList.add('active');
+      grupo.querySelector('.tab-panel[data-panel="' + alvo + '"]').classList.add('active');
+    });
+  });
 });
 </script>
 
