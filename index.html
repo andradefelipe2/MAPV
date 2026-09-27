@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amélia Veiga · Seguros & Planejamento Financeiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var theme = localStorage.getItem('av-theme');
+  if(!theme){
+    theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+<style>
+  :root{
+    --navy: #0E1F1A;
+    --navy-2: #16281F;
+    --ouro: #B08D4F;
+    --ouro-claro: #D3B778;
+    --creme: #F6F3EA;
+    --texto: #F0ECE0;
+    --muted: #9FB0A4;
+    --border: rgba(176,141,79,.24);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root[data-theme="light"]{
+    --navy: #F6F3EA;
+    --navy-2: #FFFFFF;
+    --texto: #172119;
+    --muted: #5C6E62;
+    --border: rgba(176,141,79,.35);
+  }
+  *{ box-sizing:inherit; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body{
+    font-family:'Inter', sans-serif;
+    color: var(--texto);
+    background: var(--navy);
+    line-height:1.6;
+    transition: background .3s, color .3s;
+  }
+  h1,h2,.brand{ font-family:'Marcellus', serif; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 24px; }
+  a{ color:inherit; }
+
+  .brand-group{ display:flex; align-items:center; gap:10px; }
+  .monogram{
+    width:36px; height:36px; border-radius:50%; flex:none;
+    border:1px solid var(--border); color: var(--ouro);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Inter', sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.3px;
+  }
+
+  nav{
+    position:sticky; top:0; z-index:60;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 24px; padding-top: calc(16px + env(safe-area-inset-top,0px));
+    background: rgba(15,29,51,.78); backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  :root[data-theme="light"] nav{ background: rgba(247,243,234,.82); }
+  .brand{ font-size:22px; font-weight:600; letter-spacing:.3px; color: var(--texto); }
+  .brand em{ font-style:normal; color: var(--ouro); }
+
+  .theme-toggle{
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--border); background: transparent;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color: var(--ouro);
+  }
+  .theme-toggle svg{ width:17px; height:17px; fill:currentColor; }
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon{ display:none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun{ display:flex; }
+  :root[data-theme="light"] .theme-toggle .icon-moon{ display:flex; }
+
+  header{
+    padding:52px 0 46px;
+    background: radial-gradient(circle at 80% 0%, rgba(201,168,106,.14), transparent 55%);
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block; color: var(--ouro); letter-spacing:2.5px;
+    font-size:11px; font-weight:600; text-transform:uppercase;
+  }
+  header h1{
+    font-size: clamp(30px, 9vw, 44px); font-weight:600; line-height:1.2;
+    margin-top:14px; color: var(--texto); max-width:15ch; margin-left:auto; margin-right:auto;
+  }
+  header h1 em{ font-style:normal; color: var(--ouro); }
+  header p{ margin-top:16px; font-size:15.5px; color: var(--muted); max-width:36ch; margin-left:auto; margin-right:auto; }
+
+  .hero-ctas{ display:flex; gap:10px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:10px; font-weight:600; font-size:14.5px;
+    text-decoration:none; transition: transform .15s;
+  }
+  .btn:active{ transform: scale(0.97); }
+  .btn-gold{ background: linear-gradient(135deg, var(--ouro-claro), var(--ouro)); color:#1A1305; box-shadow:0 10px 24px rgba(201,168,106,.28); }
+  .btn-outline{ border:1.5px solid var(--border); color: var(--texto); }
+
+  /* ---- QUADRADO AMOSTRATIVO +20 ANOS ---- */
+  .badge-experience{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(176,141,79,.18), rgba(176,141,79,.06));
+    border: 1.5px solid var(--ouro);
+    border-radius: 12px;
+    padding: 10px 22px;
+    margin: 20px auto 0;
+    width: fit-content;
+    box-shadow: 0 6px 18px rgba(176,141,79,.12);
+  }
+  .badge-experience .number{
+    font-family: 'Marcellus', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ouro);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-right: 8px;
+  }
+  .badge-experience .label{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+    text-align: left;
+  }
+  /* --------------------------------------- */
+
+  main{ padding:10px 0 10px; }
+  section{ margin:52px 0; }
+  .kicker{ color: var(--ouro); font-weight:600; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; text-align:center; display:block; }
+  h2{ font-size:26px; margin-top:8px; margin-bottom:8px; color: var(--texto); text-align:center; font-weight:600; }
+  .section-sub{ text-align:center; color: var(--muted); font-size:14.5px; max-width:38ch; margin:0 auto 30px; }
+
+  .about-card{
+    background: var(--navy-2); border:1px solid var(--border); border-radius:16px;
+    padding:24px; font-size:14.5px; color: var(--muted);
+  }
+  .about-card b{ color: var(--texto); }
+
+  .insurance-list{ display:flex; flex-direction:column; gap:16px; }
+  .insurance-card{
+    background: var(--navy-2); border:1px solid var(--border); border-radius:16px;
+    padding:24px;
+  }
+  .insurance-head{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .insurance-ico{
+    width:44px; height:44px; border-radius:12px; flex:none;
+    background: linear-gradient(135deg, rgba(201,168,106,.22), rgba(201,168,106,.08));
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+  }
+  .insurance-card h3{ font-size:18px; font-weight:700; color: var(--texto); }
+  .insurance-card p{ font-size:14px; color: var(--muted); }
+  .insurance-card .why{ margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
+  .insurance-card .why b{ display:block; font-size:12.5px; color: var(--ouro); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+
+  .contact-card{
+    background: var(--navy-2); border:1px solid var(--border); border-radius:16px; padding:6px 20px;
+  }
+  .contact-row{
+    display:flex; gap:12px; align-items:center; padding:16px 0; border-top:1px solid var(--border);
+    text-decoration:none; color:inherit;
+  }
+  .contact-row:first-child{ border-top:none; }
+  .contact-row .ico{ flex:none; width:22px; text-align:center; color: var(--ouro); font-size:17px; }
+  .contact-row .txt b{ display:block; color: var(--texto); font-size:15px; }
+  .contact-row .txt span{ font-size:13px; color: var(--muted); }
+
+  footer{
+    background: var(--navy-2); color: var(--muted);
+    padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));
+    text-align:center; font-size:12.5px; border-top:1px solid var(--border);
+  }
+  footer .brand{ font-size:18px; margin-bottom:6px; display:block; }
+
+  .whatsapp-float{
+    position: fixed; bottom: calc(22px + env(safe-area-inset-bottom,0px)); right:20px;
+    width:58px; height:58px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(0,0,0,.35); z-index:70; text-decoration:none;
+  }
+  .whatsapp-float svg{ width:30px; height:30px; fill:#fff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand-group">
+    <div class="monogram">MAPV</div>
+    <div class="brand">Amélia <em>Veiga</em></div>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+    <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 4.5a1 1 0 011-1V2a1 1 0 10-2 0v1.5a1 1 0 011 1zm0 15a1 1 0 011 1V22a1 1 0 10-2 0v-1.5a1 1 0 011-1zM4.5 12a1 1 0 01-1 1H2a1 1 0 110-2h1.5a1 1 0 011 1zm18 0a1 1 0 01-1 1h-1.5a1 1 0 110-2H21a1 1 0 011 1zM6.34 6.34a1 1 0 011.41 0l1.06 1.06A1 1 0 117.4 8.82L6.34 7.76a1 1 0 010-1.42zm9.9 9.9a1 1 0 011.41 0l1.06 1.06a1 1 0 11-1.41 1.41l-1.06-1.06a1 1 0 010-1.41zM17.66 6.34a1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41l1.06-1.06a1 1 0 011.41 0zm-9.9 9.9a1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41l1.06-1.06a1 1 0 011.41 0zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M20.742 13.045a8.088 8.088 0 01-2.077.273c-4.508 0-8.16-3.653-8.16-8.16 0-1.474.393-2.858 1.079-4.051A10.083 10.083 0 002 11.9C2 17.485 6.515 22 12.1 22a10.083 10.083 0 008.642-4.955z"/></svg>
+  </button>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Seguros & Planejamento Financeiro</span>
+    <h1>Proteção pensada pra <em>cada fase</em> da sua vida</h1>
+    <p>Seguro de casa, carro e vida, com orientação próxima, sem letra miúda, pra você escolher com clareza.</p>
+
+    <!-- QUADRADO AMOSTRATIVO +20 ANOS -->
+    <div class="badge-experience" aria-label="Mais de 20 anos de experiência">
+      <span class="number">+20</span>
+      <span class="label">Anos de<br>experiência</span>
+    </div>
+    <!-- FIM DO QUADRADO -->
+
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="https://wa.me/5511996917045" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn btn-outline" href="#seguros">Ver seguros</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section>
+      <span class="kicker">Quem cuida</span>
+      <h2>Sobre</h2>
+      <div class="about-card">
+        <b>Maria Amélia Pereira Veiga</b> (MAPV) é corretora de seguros e consultora financeira, especializada em proteção patrimonial e pessoal. O trabalho começa sempre pela mesma pergunta: o que realmente importa proteger na sua rotina? A partir disso, a indicação de cobertura e planejamento fica sob medida, sem pacote genérico nem venda empurrada.
+      </div>
+    </section>
+
+    <section id="seguros">
+      <span class="kicker">Coberturas</span>
+      <h2>Seguros</h2>
+      <div class="section-sub">Cada seguro protege uma parte diferente da sua vida. Veja por que cada um importa.</div>
+
+      <div class="insurance-list">
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">🏠</div>
+            <h3>Seguro Casa</h3>
+          </div>
+          <p>Cobertura contra incêndio, roubo, danos elétricos e desastres naturais, protegendo tanto o imóvel quanto os bens dentro dele.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            A casa costuma ser o maior patrimônio de uma família. Um incêndio, um vazamento grave ou um roubo podem representar um prejuízo que leva anos pra recuperar sem seguro. Com ele, o impacto financeiro de um imprevisto vira algo administrável.
+          </div>
+        </div>
+
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">🚗</div>
+            <h3>Seguro Carro</h3>
+          </div>
+          <p>Cobertura contra colisão, roubo, furto e terceiros, com assistência 24h pra imprevistos na estrada.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            Um acidente ou roubo de veículo pode gerar um custo muito acima do valor de mercado do carro, somando reparo, indenização a terceiros e processos. O seguro transforma um imprevisto caro em uma franquia previsível.
+          </div>
+        </div>
+
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">❤️</div>
+            <h3>Seguro Vida</h3>
+          </div>
+          <p>Proteção financeira pra quem depende de você, com cobertura por morte, invalidez e diárias por incapacidade temporária.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            Não é sobre pensar no pior cenário, é sobre garantir que família, filhos ou dependentes não fiquem financeiramente desamparados diante de um imprevisto. É o único seguro que protege pessoas, não bens.
+          </div>
+        </div>
+
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">🦷</div>
+            <h3>Odontológico</h3>
+          </div>
+          <p>Cobertura para consultas, manutenção preventiva e procedimentos odontológicos mais complexos.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            Tratamentos dentários de urgência ou mais complexos costumam pesar no orçamento quando surgem sem aviso. Um plano evita que isso vire um problema financeiro, além de incentivar a prevenção.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planejamento">
+      <span class="kicker">Planejamento</span>
+      <h2>Previdência e consultoria</h2>
+      <div class="section-sub">Proteção não é só contra imprevistos, também é construir segurança pro futuro.</div>
+
+      <div class="insurance-list">
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">🌱</div>
+            <h3>Previdência Privada</h3>
+          </div>
+          <p>Complementa a aposentadoria pública, com aportes programados que rendem ao longo do tempo.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            A previdência pública sozinha raramente mantém o padrão de vida desejado na aposentadoria. Começar cedo, mesmo com aportes pequenos, faz diferença grande no valor acumulado lá na frente.
+          </div>
+        </div>
+
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">🛡️</div>
+            <h3>Proteção Financeira</h3>
+          </div>
+          <p>Estratégias e produtos voltados a proteger renda e patrimônio diante de imprevistos: doença, invalidez ou perda de renda.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            Complementa o seguro de vida cobrindo cenários que ele sozinho não cobre, como a perda temporária da capacidade de trabalhar, mantendo as contas em dia mesmo num momento difícil.
+          </div>
+        </div>
+
+        <div class="insurance-card">
+          <div class="insurance-head">
+            <div class="insurance-ico">📋</div>
+            <h3>Consultoria</h3>
+          </div>
+          <p>Análise personalizada da sua situação (seguros existentes, patrimônio e objetivos) pra montar um plano de proteção sob medida.</p>
+          <div class="why">
+            <b>Por que importa</b>
+            Cada família tem prioridades diferentes. A consultoria evita contratar cobertura genérica ou redundante, otimizando o que você já paga em vez de simplesmente somar mais um produto.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="kicker">Fale comigo</span>
+      <h2>Contato</h2>
+      <div class="contact-card">
+        <a class="contact-row" href="https://wa.me/5511996917045" target="_blank" rel="noopener">
+          <div class="ico">📞</div>
+          <div class="txt"><b>(11) 99691-7045</b><span>WhatsApp</span></div>
+        </a>
+        <a class="contact-row" href="mailto:amelia.veiga@hotmail.com">
+          <div class="ico">✉️</div>
+          <div class="txt"><b>amelia.veiga@hotmail.com</b><span>E-mail</span></div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">Amélia Veiga</span>
+    Maria Amélia Pereira Veiga (MAPV) · Corretora de Seguros
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5511996917045" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.98.582 3.83 1.588 5.383L2 22l4.735-1.55A9.955 9.955 0 0012.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.116a8.09 8.09 0 01-4.363-1.264l-.312-.185-3.075 1.007.995-3.032-.2-.31a8.109 8.109 0 01-1.25-4.332c0-4.484 3.648-8.132 8.205-8.132 4.484 0 8.132 3.648 8.132 8.132 0 4.484-3.648 8.116-8.132 8.116z"/></svg>
+</a>
+
+<script>
+document.getElementById('theme-toggle').addEventListener('click', function(){
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('av-theme', next); } catch(e) {}
+});
+</script>
+
+</body>
+</html>
