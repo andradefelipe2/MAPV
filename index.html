@@ -4,9 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Amélia Veiga · Seguros & Planejamento Financeiro</title>
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/andradefelipe2/MAPV/main/favicon.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/andradefelipe2/MAPV/main/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
 <script>
 (function(){
   var theme = localStorage.getItem('av-theme');
@@ -50,6 +59,16 @@
   .wrap{ max-width:640px; margin:0 auto; padding:0 24px; }
   a{ color:inherit; }
 
+  /* Lucide SVGs: garante tamanho, traço e cor herdados */
+  .tabs-nav svg,
+  .tab-panel h3 svg,
+  .contact-row svg{
+    stroke: currentColor;
+    stroke-width: 1.75;
+    flex:none;
+    display:block;
+  }
+
   .brand-group{ display:flex; align-items:center; gap:10px; }
 
   /* ---- LOGO ---- */
@@ -89,9 +108,14 @@
     border:1px solid var(--border); background: transparent;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer; color: var(--ouro);
+    transition: background .2s, transform .15s;
   }
-  .theme-toggle svg{ width:17px; height:17px; fill:currentColor; }
-  .theme-toggle .icon-sun, .theme-toggle .icon-moon{ display:none; }
+  .theme-toggle:hover{ background: rgba(176,141,79,.08); }
+  .theme-toggle:active{ transform: scale(.95); }
+  .theme-toggle svg{ width:17px; height:17px; stroke-width:1.9; }
+
+  .theme-toggle .icon-sun,
+  .theme-toggle .icon-moon{ display:none; align-items:center; justify-content:center; }
   :root[data-theme="dark"] .theme-toggle .icon-sun{ display:flex; }
   :root[data-theme="light"] .theme-toggle .icon-moon{ display:flex; }
 
@@ -185,8 +209,11 @@
   .tabs-nav::-webkit-scrollbar{ display: none; }
 
   .tab-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     flex: none;
-    padding: 10px 16px;
+    padding: 10px 15px;
     border-radius: 10px;
     border: 1px solid transparent;
     background: transparent;
@@ -198,6 +225,7 @@
     white-space: nowrap;
     transition: all .2s;
   }
+  .tab-btn svg{ width:15px; height:15px; }
   .tab-btn:hover{ color: var(--texto); }
   .tab-btn.active{
     background: linear-gradient(135deg, var(--ouro-claro), var(--ouro));
@@ -218,9 +246,16 @@
   }
 
   .tab-panel h3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 19px;
     color: var(--texto);
     margin-bottom: 10px;
+  }
+  .tab-panel h3 svg{
+    width:20px; height:20px;
+    color: var(--ouro);
   }
   .tab-panel p{
     font-size: 14.5px;
@@ -248,11 +283,16 @@
     background: var(--navy-2); border:1px solid var(--border); border-radius:16px; padding:6px 20px;
   }
   .contact-row{
-    display:flex; gap:12px; align-items:center; padding:16px 0; border-top:1px solid var(--border);
+    display:flex; gap:14px; align-items:center; padding:16px 0; border-top:1px solid var(--border);
     text-decoration:none; color:inherit;
   }
   .contact-row:first-child{ border-top:none; }
-  .contact-row .ico{ flex:none; width:22px; text-align:center; color: var(--ouro); font-size:17px; }
+  .contact-row .ico{
+    flex:none; width:22px; height:22px;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ouro);
+  }
+  .contact-row .ico svg{ width:19px; height:19px; }
   .contact-row .txt b{ display:block; color: var(--texto); font-size:15px; }
   .contact-row .txt span{ font-size:13px; color: var(--muted); }
 
@@ -286,8 +326,8 @@
     <div class="brand">Amélia <em>Veiga</em></div>
   </div>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
-    <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 4.5a1 1 0 011-1V2a1 1 0 10-2 0v1.5a1 1 0 011 1zm0 15a1 1 0 011 1V22a1 1 0 10-2 0v-1.5a1 1 0 011-1zM4.5 12a1 1 0 01-1 1H2a1 1 0 110-2h1.5a1 1 0 011 1zm18 0a1 1 0 01-1 1h-1.5a1 1 0 110-2H21a1 1 0 011 1zM6.34 6.34a1 1 0 011.41 0l1.06 1.06A1 1 0 117.4 8.82L6.34 7.76a1 1 0 010-1.42zm9.9 9.9a1 1 0 011.41 0l1.06 1.06a1 1 0 11-1.41 1.41l-1.06-1.06a1 1 0 010-1.41zM17.66 6.34a1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41l1.06-1.06a1 1 0 011.41 0zm-9.9 9.9a1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41l1.06-1.06a1 1 0 011.41 0zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
-    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M20.742 13.045a8.088 8.088 0 01-2.077.273c-4.508 0-8.16-3.653-8.16-8.16 0-1.474.393-2.858 1.079-4.051A10.083 10.083 0 002 11.9C2 17.485 6.515 22 12.1 22a10.083 10.083 0 008.642-4.955z"/></svg>
+    <span class="icon-sun"><i data-lucide="sun"></i></span>
+    <span class="icon-moon"><i data-lucide="moon"></i></span>
   </button>
 </nav>
 
@@ -327,14 +367,22 @@
 
       <div class="tabs-seguros">
         <div class="tabs-nav" role="tablist">
-          <button class="tab-btn active" data-tab="casa" role="tab">🏠 Casa</button>
-          <button class="tab-btn" data-tab="carro" role="tab">🚗 Carro</button>
-          <button class="tab-btn" data-tab="vida" role="tab">❤️ Vida</button>
-          <button class="tab-btn" data-tab="odonto" role="tab">🦷 Odontológico</button>
+          <button class="tab-btn active" data-tab="casa" role="tab">
+            <i data-lucide="house"></i> Casa
+          </button>
+          <button class="tab-btn" data-tab="carro" role="tab">
+            <i data-lucide="car"></i> Carro
+          </button>
+          <button class="tab-btn" data-tab="vida" role="tab">
+            <i data-lucide="heart"></i> Vida
+          </button>
+          <button class="tab-btn" data-tab="odonto" role="tab">
+            <i data-lucide="smile"></i> Odontológico
+          </button>
         </div>
 
         <div class="tab-panel active" data-panel="casa">
-          <h3>🏠 Seguro Casa</h3>
+          <h3><i data-lucide="house"></i> Seguro Casa</h3>
           <p>Cobertura contra incêndio, roubo, danos elétricos e desastres naturais, protegendo tanto o imóvel quanto os bens dentro dele.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -343,7 +391,7 @@
         </div>
 
         <div class="tab-panel" data-panel="carro">
-          <h3>🚗 Seguro Carro</h3>
+          <h3><i data-lucide="car"></i> Seguro Carro</h3>
           <p>Cobertura contra colisão, roubo, furto e terceiros, com assistência 24h pra imprevistos na estrada.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -352,7 +400,7 @@
         </div>
 
         <div class="tab-panel" data-panel="vida">
-          <h3>❤️ Seguro Vida</h3>
+          <h3><i data-lucide="heart"></i> Seguro Vida</h3>
           <p>Proteção financeira pra quem depende de você, com cobertura por morte, invalidez e diárias por incapacidade temporária.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -361,7 +409,7 @@
         </div>
 
         <div class="tab-panel" data-panel="odonto">
-          <h3>🦷 Odontológico</h3>
+          <h3><i data-lucide="smile"></i> Odontológico</h3>
           <p>Cobertura para consultas, manutenção preventiva e procedimentos odontológicos mais complexos.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -378,13 +426,19 @@
 
       <div class="tabs-seguros">
         <div class="tabs-nav" role="tablist">
-          <button class="tab-btn active" data-tab="prev" role="tab">🌱 Previdência</button>
-          <button class="tab-btn" data-tab="prot" role="tab">🛡️ Proteção</button>
-          <button class="tab-btn" data-tab="cons" role="tab">📋 Consultoria</button>
+          <button class="tab-btn active" data-tab="prev" role="tab">
+            <i data-lucide="sprout"></i> Previdência
+          </button>
+          <button class="tab-btn" data-tab="prot" role="tab">
+            <i data-lucide="shield-check"></i> Proteção
+          </button>
+          <button class="tab-btn" data-tab="cons" role="tab">
+            <i data-lucide="clipboard-list"></i> Consultoria
+          </button>
         </div>
 
         <div class="tab-panel active" data-panel="prev">
-          <h3>🌱 Previdência Privada</h3>
+          <h3><i data-lucide="sprout"></i> Previdência Privada</h3>
           <p>Complementa a aposentadoria pública, com aportes programados que rendem ao longo do tempo.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -393,7 +447,7 @@
         </div>
 
         <div class="tab-panel" data-panel="prot">
-          <h3>🛡️ Proteção Financeira</h3>
+          <h3><i data-lucide="shield-check"></i> Proteção Financeira</h3>
           <p>Estratégias e produtos voltados a proteger renda e patrimônio diante de imprevistos: doença, invalidez ou perda de renda.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -402,7 +456,7 @@
         </div>
 
         <div class="tab-panel" data-panel="cons">
-          <h3>📋 Consultoria</h3>
+          <h3><i data-lucide="clipboard-list"></i> Consultoria</h3>
           <p>Análise personalizada da sua situação (seguros existentes, patrimônio e objetivos) pra montar um plano de proteção sob medida.</p>
           <div class="why">
             <b>Por que importa</b>
@@ -417,11 +471,11 @@
       <h2>Contato</h2>
       <div class="contact-card">
         <a class="contact-row" href="https://wa.me/5511996917045" target="_blank" rel="noopener">
-          <div class="ico">📞</div>
+          <div class="ico"><i data-lucide="phone"></i></div>
           <div class="txt"><b>(11) 99691-7045</b><span>WhatsApp</span></div>
         </a>
         <a class="contact-row" href="mailto:amelia.veiga@hotmail.com">
-          <div class="ico">✉️</div>
+          <div class="ico"><i data-lucide="mail"></i></div>
           <div class="txt"><b>amelia.veiga@hotmail.com</b><span>E-mail</span></div>
         </a>
       </div>
@@ -442,31 +496,34 @@
 </a>
 
 <script>
-// Toggle de tema
-document.getElementById('theme-toggle').addEventListener('click', function(){
-  var current = document.documentElement.getAttribute('data-theme');
-  var next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  try { localStorage.setItem('av-theme', next); } catch(e) {}
-});
+  // Inicializa ícones Lucide (substitui <i data-lucide="..."> por <svg>)
+  if (window.lucide) { lucide.createIcons(); }
 
-// Tabs (funciona pra qualquer .tabs-seguros na página)
-document.querySelectorAll('.tabs-seguros').forEach(function(grupo){
-  var botoes = grupo.querySelectorAll('.tab-btn');
-  var paineis = grupo.querySelectorAll('.tab-panel');
+  // Toggle de tema
+  document.getElementById('theme-toggle').addEventListener('click', function(){
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('av-theme', next); } catch(e) {}
+  });
 
-  botoes.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var alvo = btn.dataset.tab;
+  // Tabs
+  document.querySelectorAll('.tabs-seguros').forEach(function(grupo){
+    var botoes = grupo.querySelectorAll('.tab-btn');
+    var paineis = grupo.querySelectorAll('.tab-panel');
 
-      botoes.forEach(function(b){ b.classList.remove('active'); });
-      paineis.forEach(function(p){ p.classList.remove('active'); });
+    botoes.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var alvo = btn.dataset.tab;
 
-      btn.classList.add('active');
-      grupo.querySelector('.tab-panel[data-panel="' + alvo + '"]').classList.add('active');
+        botoes.forEach(function(b){ b.classList.remove('active'); });
+        paineis.forEach(function(p){ p.classList.remove('active'); });
+
+        btn.classList.add('active');
+        grupo.querySelector('.tab-panel[data-panel="' + alvo + '"]').classList.add('active');
+      });
     });
   });
-});
 </script>
 
 </body>
